@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EndingCutScene : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // cutscenes에 컷씬을 넣으면 클식시 자동으로 다음 컷씬으로 넘어가는 코드
 
-    public List<GameObject> cutScenes = new List<GameObject>();
-    int scenesNum = 0;
+    public List<GameObject> cutScenes = new List<GameObject>(); // 화면에 띄울 컷씬들
+    int scenesNum = 0; // 컷씬을 넘기기 위한 컷씬 번호
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class EndingCutScene : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)) // 마우스 클릭을 입력받을시 SceneNum 증가 및 컷씬 변경
         {
             if(scenesNum + 1 < cutScenes.Count) 
             {
@@ -32,9 +32,9 @@ public class EndingCutScene : MonoBehaviour
     {
         for(int i = 0; i < cutScenes.Count;  i++)
         {
-            cutScenes[i].SetActive(false);
+            cutScenes[i].SetActive(false);// 전체 컷씬 비활성화
         }
-        cutScenes[scenesNum].SetActive(true);
+        cutScenes[scenesNum].SetActive(true);//sceneNum번째 컷씬을 활성화
     }
 
 
