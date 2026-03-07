@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CutScenes : MonoBehaviour
 {
-    // cutscenes에 컷씬을 넣으면 클식시 자동으로 다음 컷씬으로 넘어가는 코드
+    // cutscenes리스트에 컷씬을 넣으면 클식시 자동으로 다음 컷씬으로 넘어가는 코드
 
     public List<GameObject> cutScenes = new List<GameObject>(); // 화면에 띄울 컷씬들
     int scenesNum = 0; // 컷씬을 넘기기 위한 컷씬 번호
@@ -28,11 +28,17 @@ public class CutScenes : MonoBehaviour
             {
                 scenesNum += 1;
                 cutSceneChange();
+
             }
             else  { SceneManager.LoadScene(targetSceneNum); }// 씬넘버를 이용해 씬 이동
         }
     }
-
+    /// <summary>
+    /// cutScenes 리스트의 scenesNum 번째의 씬을 표시
+    /// <para>
+    /// 씬 전체를 끄고 대상의 씬 하나를 키는 방식으로 동작
+    /// </para>
+    /// </summary>
     void cutSceneChange()
     {
         for(int i = 0; i < cutScenes.Count;  i++)
