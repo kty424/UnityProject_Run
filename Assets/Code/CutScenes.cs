@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class EndingCutScene : MonoBehaviour
+public class CutScenes : MonoBehaviour
 {
     // cutscenes에 컷씬을 넣으면 클식시 자동으로 다음 컷씬으로 넘어가는 코드
 
     public List<GameObject> cutScenes = new List<GameObject>(); // 화면에 띄울 컷씬들
     int scenesNum = 0; // 컷씬을 넘기기 위한 컷씬 번호
+
+    public int targetSceneNum; // 컷씬이 끝나고 넘어 갈 씬의 넘버
+
 
     private void Start()
     {
@@ -25,6 +29,7 @@ public class EndingCutScene : MonoBehaviour
                 scenesNum += 1;
                 cutSceneChange();
             }
+            else  { SceneManager.LoadScene(targetSceneNum); }// 씬넘버를 이용해 씬 이동
         }
     }
 
@@ -37,5 +42,5 @@ public class EndingCutScene : MonoBehaviour
         cutScenes[scenesNum].SetActive(true);//sceneNum번째 컷씬을 활성화
     }
 
-
+  
 }
