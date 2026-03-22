@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         jumpCount = maxJumpCount;
+
     }
 
     // Update is called once per frame
@@ -30,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
         // 점프
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
         {
+            // 점프시 현제 y속도를 0으로 해  점프를 자연스럽게 함
+            rb.velocity = new Vector3(rb.velocity.x, 0f, 0f); 
+
             // 현재 속도 유지하기 위해 new Vector3로 x축 속도 유지, y축에 jumpForce 적용
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, 0f);
             jumpCount--;
