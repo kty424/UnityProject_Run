@@ -6,12 +6,12 @@ TagManager:
   tags:
   - Ground
   - Obstacle
-  - MapArea
+  - CameraArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

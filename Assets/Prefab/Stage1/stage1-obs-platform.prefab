@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8120057024405462807}
   - component: {fileID: 1229825412408357696}
+  - component: {fileID: 6135905854763329513}
   m_Layer: 0
   m_Name: stage1-obs-platform
   m_TagString: Ground
@@ -159,3 +160,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6135905854763329513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6014454311292616005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0465a3ffdbf0249b894b30e80e2799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
