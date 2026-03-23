@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: e9bdf85aadd608a4a8b56c22240f80b0
   - enabled: 1
     path: Assets/Scenes/Game.unity
-    guid: f61de61e0f73b404bae4ab23ef9f006e
+    guid: 0ff987239b05fa141bcdc9bab8283d73
   - enabled: 1
     path: Assets/Scenes/SuccessCutScene.unity
     guid: 301e83c90faf9804d9baa290e1bc096e
