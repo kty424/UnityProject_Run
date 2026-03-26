@@ -1,7 +1,9 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,10 +13,16 @@ public class GameManager : MonoBehaviour
     [Header("Stage2")] public List<GameObject> stage2Maps; //스테이지 2 맵
     [Header("Stage3")] public List<GameObject> stage3Maps; //스테이지 3 맵
 
-    enum Stage { stage1,stage2,stage3};
-    Stage currentStage;
+    enum Stage { stage1,stage2,stage3}; // 스테이지 상황
+    Stage currentStage; // 스테이지 상황
+
+
+    public TextMeshProUGUI ScoreText;
+    float score;
+    public float clearScore = 100; // 게임 클리어 점수
 
     //맵 하나의 길이를 50이라 상정
+
     const int mapWith = 50;
     private void Awake()
     {
@@ -26,10 +34,32 @@ public class GameManager : MonoBehaviour
         currentStage = Stage.stage1;
     }
 
-    //점수, 전수에 따라 맵 변환
+    private void Update()
+    {
+        score += Time.deltaTime; // 시간만큼 점수
+        if(ScoreText != null ) // 오브젝트할당이 되어있을때만 
+        {
+            ScoreText.text = "Score : " + score.ToString(".00"); // 소수점 2째 까지만 나오게
+        }
+
+        if(score >= clearScore)
+        {
+            PlayerPrefs.SetFloat("Score", score); // 최종 점수 저장
+            GameClear();
+        }
+    }
 
 
 
+    public void GameClear()
+    {
+        SceneManager.LoadScene("SuccessCutScene"); // 게임 클리어 씬으로 이동
+    }
+    public void GameOver()
+    {
+        PlayerPrefs.SetFloat("Score", score); // 최종 점수 저장
+        SceneManager.LoadScene("FailureCutScene"); // 게임 오버씬으로 이동
+    }
 
 
 

@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
     private Rigidbody rb;
 
+    GameManager gm; // 게임매니저
+
+
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
     // Start is called before the first frame update
@@ -22,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         jumpCount = maxJumpCount;
+        gm = GameManager.Instance;
 
     }
 
@@ -43,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = new Vector3(MoveSpeed, rb.velocity.y, 0f);
+
+        if(transform.position.y < -3f) { gm.GameOver(); } // 추락하면 게임오버
     }
 
     // 아이템과 충돌 시 아이템 즉시 사용
@@ -89,7 +95,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                gm.GameOver();
             }
         }
     }
